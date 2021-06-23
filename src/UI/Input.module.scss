@@ -1,0 +1,17 @@
+@import "../variables";
+
+.Input {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 1.5em;
+  input:disabled {
+    border: 1px solid $light-grey;
+    background-color: transparent;
+    + label {
+      color: $light-grey;
+    }
+  }
+  span {
+    color: $red;
+  }
+}

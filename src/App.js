@@ -1,7 +1,9 @@
-import './App.css';
+import React from "react";
+
+import Form from './containers/Form'
 
 function App() {
+  return <Form />
+}
 
-  }
-
-export default App;
+export default React.memo(App);

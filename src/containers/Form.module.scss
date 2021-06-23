@@ -1,0 +1,31 @@
+@import "../variables";
+
+.form {
+  width: 90vw;
+  margin: 20px auto;
+  padding: 20px 0 0 0;
+  border: 1px solid $light-grey;
+  box-shadow: 0 0 10px $cream;
+  .fieldset-container {
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-around;
+    gap: 2em;
+    margin-top: 0;
+    }
+  .buttons {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid $light-grey;
+  }
+}
+
+@media (max-width: 878px) {
+  .buttons {
+    justify-content: center;
+  }
+  .fieldset-container {
+    flex-flow: column;
+  }
+}

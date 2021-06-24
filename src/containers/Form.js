@@ -42,14 +42,6 @@ const formInitialState = {
   },
 };
 
-const checkValidityHandler = (obj) => {
-  return (
-    [...Object.values(obj.Ethernet), ...Object.values(obj.Wireless)].filter(
-      (err) => Object.values(err).length > 0
-    ).length === 0
-  );
-};
-
 const formReducer = (state, action) => {
   const { name, type, value } = action;
 
@@ -117,7 +109,7 @@ const formReducer = (state, action) => {
           ...state.errors,
           [path]: {
             ...state.errors[path],
-            [subPath]: "",
+            [subPath]: {},
           },
         },
       };
@@ -182,11 +174,21 @@ function Form() {
     });
   }, []);
 
-  const formIsValid = checkValidityHandler(form.errors);
+  let formIsValid = true;
 
+  const formCheckValidityHandler = (obj) => {
+    for (let key in obj) {
+      if (typeof obj[key] === "string") {
+        formIsValid = false;
+      }
+      if (typeof obj[key] === "object") formCheckValidityHandler(obj[key]);
+    }
+  };
+  formCheckValidityHandler(form.errors);
+  
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    if (!formIsValid) return;
+    // if (!formIsValid) return;
     dispatchForm({ type: "SUBMIT" });
   };
 
@@ -202,7 +204,12 @@ function Form() {
         <Fieldset name="Wireless" onChange={inputChangeHandler} form={form} />
       </div>
       <div className={styles.buttons}>
-        <Button type="submit">Save</Button>
+        <Button
+          type="submit"
+          disabled={!formIsValid}
+        >
+          Save
+        </Button>
         <Button type="cancel" onClick={formCancelHandler}>
           Cancel
         </Button>

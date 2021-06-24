@@ -12,7 +12,7 @@
     justify-content: space-around;
     gap: 2em;
     margin-top: 0;
-    }
+  }
   .buttons {
     display: flex;
     width: 100%;
@@ -27,5 +27,16 @@
   }
   .fieldset-container {
     flex-flow: column;
+  }
+}
+@media (max-width: 360px) {
+  .form {
+    width: 99vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .form {
+    width: 70vw;
   }
 }

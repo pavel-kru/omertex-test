@@ -1,10 +1,8 @@
-
 import Input from "../UI/Input";
 import styles from "./Fieldset.module.scss";
-
+import Button from "../UI/Button";
 
 const Fieldset = ({ name, form, onChange }) => {
- 
   let enableWifi = null;
   let wirelessSpecialSettings = null;
 
@@ -18,26 +16,36 @@ const Fieldset = ({ name, form, onChange }) => {
         type="checkbox"
         className={styles.enableWifi}
         onChange={onChange}
+        checked={form.Wireless.enable}
       />
     );
 
     wirelessSpecialSettings = (
       <>
-        <Input
-          label="Wireless Network Name:"
-          idx={name + ".networkName"}
-          name="networkName"
-          className={styles.inputText}
-          required
-          placeholder="Please select"
-          onChange={onChange}
-        />
+        <div className={styles.select}>
+          <Input
+            label="Wireless Network Name:"
+            idx={name + ".networkName"}
+            name="networkName"
+            type="select"
+            placeholder="Please select"
+            value={form.Wireless.networkName}
+            onChange={onChange}
+            required
+          />
+          <Button
+            type="refresh"
+            disabled={!form.Wireless.enable}
+            onClick={(event) => event.preventDefault()}
+          />
+        </div>
         <Input
           label="Enable Wireless Security:"
           idx={name + ".enableKey"}
           id={`${name}-security-enable`}
           type="checkbox"
           onChange={onChange}
+          checked={form.Wireless.enableKey}
         />
         <Input
           label="Security Key:"
@@ -45,8 +53,9 @@ const Fieldset = ({ name, form, onChange }) => {
           type="text"
           disabled={!form.Wireless.enableKey}
           className={styles.inputText}
-          required
+          value={form.Wireless.securityKey}
           onChange={onChange}
+          required
         />
       </>
     );
@@ -63,7 +72,6 @@ const Fieldset = ({ name, form, onChange }) => {
       {wirelessSpecialSettings}
       <Input
         label="Obtain an IP address automatically (DHCP/BootP)"
-        path={name}
         idx={name + ".ip.auto"}
         id={`${name}-ip-auto`}
         type="radio"
@@ -72,23 +80,25 @@ const Fieldset = ({ name, form, onChange }) => {
         onChange={onChange}
       />
       <Input
-        idx={name + ".ip.auto"}
         label="Use the following IP address:"
+        idx={name + ".ip.auto"}
         id={`${name}-ip-manually`}
         type="radio"
         name={`${name}-ip`}
+        checked={!form[name].ip.auto}
         onChange={onChange}
       />
       <fieldset disabled={form[name].ip.auto}>
         <Input
-          label="IP adress:"
-          idx={name + ".ip.adress"}
+          label="IP address:"
+          idx={name + ".ip.address"}
           id={`${name}-ip-value`}
           type="text"
           className={styles.inputText}
-          required
-          value={form[name].ip.adress}
+          value={form[name].ip.address}
+          error={form.errors[name].ip.address}
           onChange={onChange}
+          required
         />
         <Input
           label="Subnet Mask:"
@@ -96,36 +106,36 @@ const Fieldset = ({ name, form, onChange }) => {
           id={`${name}-subnet`}
           type="text"
           className={styles.inputText}
-          required
-          onChange={onChange}
           value={form[name].ip.subnetMask}
+          error={form.errors[name].ip.subnetMask}
+          onChange={onChange}
+          required
         />
         <Input
           label="Deafault Gateway:"
-          path={name}
           idx={name + ".ip.defaultGateway"}
           id={`${name}-defaultGateway`}
           type="text"
           className={styles.inputText}
-          onChange={onChange}
           value={form[name].ip.defaultGateway}
+          onChange={onChange}
         />
       </fieldset>
       <Input
         label="Obtain DNS service address automatically"
         idx={name + ".dns.auto"}
-        id={`${name}-dns-adress-auto`}
+        id={`${name}-dns-address-auto`}
         type="radio"
-        name={`${name}-dns-adress`}
+        name={`${name}-dns-address`}
         checked={form[name].dns.auto}
         onChange={onChange}
       />
       <Input
         label="Use the following DNS server address:"
         idx={name + ".dns.auto"}
-        id={`${name}-dns-adress-manually`}
+        id={`${name}-dns-address-manually`}
         type="radio"
-        name={`${name}-dns-adress`}
+        name={`${name}-dns-address`}
         onChange={onChange}
       />
       <fieldset disabled={form[name].dns.auto}>
@@ -134,9 +144,10 @@ const Fieldset = ({ name, form, onChange }) => {
           idx={name + ".dns.preferedServer"}
           type="text"
           className={styles.inputText}
-          required
-          onChange={onChange}
           value={form[name].dns.preferedServer}
+          error={form.errors[name].dns.preferedServer}
+          onChange={onChange}
+          required
         />
         <Input
           label="Alternative DNS server:"
@@ -145,6 +156,7 @@ const Fieldset = ({ name, form, onChange }) => {
           className={styles.inputText}
           onChange={onChange}
           value={form[name].dns.alternativeServer}
+          error={form.errors[name].dns.alternativeServer}
         />
       </fieldset>
     </fieldset>

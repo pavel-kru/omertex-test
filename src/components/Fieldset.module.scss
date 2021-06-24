@@ -8,9 +8,14 @@
     font-weight: 700;
     padding: 20px 0;
     .enableWifi {
-      margin-top: 1.5em;
+      margin-top: 1em;
+      margin-bottom: 0;
       font-weight: normal;
     }
+  }
+  .select {
+    display: flex;
+    justify-content: flex-end;
   }
   .inputText {
     flex-direction: row-reverse;

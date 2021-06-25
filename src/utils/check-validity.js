@@ -28,35 +28,3 @@ export const ipValidation = (value, param) => {
   }
 };
 
-export const updateErrors = (errors, group, subgroup, ...rest) => {
-  if (group === "Wireless") {
-    switch (true) {
-      case !subgroup.checked:
-        return {
-          ...errors,
-          Wirelessipaddress: null,
-          WirelessipsubnetMask: null,
-          WirelessdnsalternativeServer: null,
-          WirelessdnspreferedServer: "",
-        };
-      case "ip":
-        return {
-          ...errors,
-          Wirelessipaddress: null,
-          WirelessipsubnetMask: null,
-        };
-      case "dns":
-        return {
-          ...errors,
-          WirelessdnsalternativeServer: "",
-          WirelessdnspreferedServer: "",
-        };
-
-      default:
-        break;
-    }
-    return {
-      ...errors,
-    };
-  }
-};

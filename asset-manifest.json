@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/omertex-test/static/css/main.bc80ebe2.chunk.css",
+    "main.css": "/omertex-test/static/css/main.a5021450.chunk.css",
     "main.js": "/omertex-test/static/js/main.9fb65d6c.chunk.js",
     "main.js.map": "/omertex-test/static/js/main.9fb65d6c.chunk.js.map",
     "runtime-main.js": "/omertex-test/static/js/runtime-main.8f719410.js",
@@ -10,13 +10,13 @@
     "static/js/3.42a34e61.chunk.js": "/omertex-test/static/js/3.42a34e61.chunk.js",
     "static/js/3.42a34e61.chunk.js.map": "/omertex-test/static/js/3.42a34e61.chunk.js.map",
     "index.html": "/omertex-test/index.html",
-    "static/css/main.bc80ebe2.chunk.css.map": "/omertex-test/static/css/main.bc80ebe2.chunk.css.map",
+    "static/css/main.a5021450.chunk.css.map": "/omertex-test/static/css/main.a5021450.chunk.css.map",
     "static/js/2.84edac84.chunk.js.LICENSE.txt": "/omertex-test/static/js/2.84edac84.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8f719410.js",
     "static/js/2.84edac84.chunk.js",
-    "static/css/main.bc80ebe2.chunk.css",
+    "static/css/main.a5021450.chunk.css",
     "static/js/main.9fb65d6c.chunk.js"
   ]
 }

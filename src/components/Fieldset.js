@@ -20,7 +20,7 @@ const Fieldset = ({ name, form, onChange }) => {
         label="Enable wifi:"
         path={name}
         idx={name + ".enable"}
-        id={`${name}-enable`}
+        id={`${name}.enable`}
         type="checkbox"
         className={styles.enableWifi}
         onChange={onChange}
@@ -50,7 +50,7 @@ const Fieldset = ({ name, form, onChange }) => {
         <Input
           label="Enable Wireless Security:"
           idx={name + ".enableKey"}
-          id={`${name}-security-enable`}
+          id={`${name}.security.enable`}
           className={`${styles.inputText} ${disabledStyle}`}
           type="checkbox"
           onChange={onChange}
@@ -82,20 +82,20 @@ const Fieldset = ({ name, form, onChange }) => {
       <Input
         label="Obtain an IP address automatically (DHCP/BootP)"
         idx={name + ".ip.auto"}
-        id={`${name}-ip-auto`}
+        id={`${name}.ip.auto`}
         type="radio"
         className={disabledStyle}
-        name={`${name}-ip`}
+        name={`${name}.ip`}
         checked={form[name].ip.auto}
         onChange={onChange}
       />
       <Input
         label="Use the following IP address:"
         idx={name + ".ip.auto"}
-        id={`${name}-ip-manually`}
+        id={`${name}.ip.manually`}
         className={disabledStyle}
         type="radio"
-        name={`${name}-ip`}
+        name={`${name}.ip`}
         checked={!form[name].ip.auto}
         onChange={onChange}
       />
@@ -106,7 +106,7 @@ const Fieldset = ({ name, form, onChange }) => {
         <Input
           label="IP address:"
           idx={name + ".ip.address"}
-          id={`${name}-ip-value`}
+          id={`${name}.ip.value`}
           type="text"
           className={styles.inputText}
           value={form[name].ip.address}
@@ -117,7 +117,7 @@ const Fieldset = ({ name, form, onChange }) => {
         <Input
           label="Subnet Mask:"
           idx={name + ".ip.subnetMask"}
-          id={`${name}-subnet`}
+          id={`${name}.subnet`}
           type="text"
           className={styles.inputText}
           value={form[name].ip.subnetMask}
@@ -128,7 +128,7 @@ const Fieldset = ({ name, form, onChange }) => {
         <Input
           label="Deafault Gateway:"
           idx={name + ".ip.defaultGateway"}
-          id={`${name}-defaultGateway`}
+          id={`${name}.defaultGateway`}
           type="text"
           className={styles.inputText}
           value={form[name].ip.defaultGateway}
@@ -138,21 +138,21 @@ const Fieldset = ({ name, form, onChange }) => {
       <Input
         label="Obtain DNS service address automatically"
         idx={name + ".dns.auto"}
-        id={`${name}-dns-address-auto`}
+        id={`${name}.dns.address.auto`}
         className={disabledStyle}
         type="radio"
-        name={`${name}-dns-address`}
+        name={`${name}.dns.address`}
         checked={form[name].dns.auto}
         onChange={onChange}
       />
       <Input
         label="Use the following DNS server address:"
         idx={name + ".dns.auto"}
-        id={`${name}-dns-address-manually`}
+        id={`${name}.dns.address.manually`}
         className={disabledStyle}
         checked={!form[name].dns.auto}
         type="radio"
-        name={`${name}-dns-address`}
+        name={`${name}.dns.address`}
         onChange={onChange}
       />
       <fieldset

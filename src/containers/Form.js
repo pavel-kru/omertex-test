@@ -184,7 +184,7 @@ function Form() {
       if (typeof obj[key] === "object") formCheckValidityHandler(obj[key]);
     }
   };
-  
+
   formCheckValidityHandler(form.errors);
   
   const formSubmitHandler = (event) => {
@@ -219,4 +219,4 @@ function Form() {
   );
 }
 
-export default React.memo(Form);
+export default Form;

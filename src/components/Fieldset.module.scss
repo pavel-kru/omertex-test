@@ -52,7 +52,7 @@
     + label::before {
       border-radius: 5px;
       transition-timing-function: ease-in-out;
-      transition-duration: 0.3s;
+      transition-duration: 0.15s;
     }
     &:checked + label::before {
       height: 1.9em;

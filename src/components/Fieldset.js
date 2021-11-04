@@ -40,11 +40,13 @@ const Fieldset = ({ name, form, onChange }) => {
             value={form.Wireless.networkName}
             onChange={onChange}
             required
+            disabled={wirelessDisabled}
           />
           <Button
             type='refresh'
             disabled={!form.Wireless.enable}
             onClick={(event) => event.preventDefault()}
+            disabled={wirelessDisabled}
           />
         </div>
         <Input
@@ -55,6 +57,7 @@ const Fieldset = ({ name, form, onChange }) => {
           type='checkbox'
           onChange={onChange}
           checked={form.Wireless.enableKey}
+          disabled={wirelessDisabled}
         />
         <Input
           label='Security Key:'
@@ -67,6 +70,7 @@ const Fieldset = ({ name, form, onChange }) => {
           value={form.Wireless.securityKey}
           onChange={onChange}
           required
+          disabled={wirelessDisabled}
         />
       </>
     );
@@ -88,6 +92,7 @@ const Fieldset = ({ name, form, onChange }) => {
         name={`${name}.ip`}
         checked={form[name].ip.auto}
         onChange={onChange}
+        disabled={wirelessDisabled}
       />
       <Input
         label='Use the following IP address:'
@@ -98,6 +103,7 @@ const Fieldset = ({ name, form, onChange }) => {
         name={`${name}.ip`}
         checked={!form[name].ip.auto}
         onChange={onChange}
+        disabled={wirelessDisabled}
       />
       <fieldset
         disabled={form[name].ip.auto}
@@ -144,6 +150,7 @@ const Fieldset = ({ name, form, onChange }) => {
         name={`${name}.dns.address`}
         checked={form[name].dns.auto}
         onChange={onChange}
+        disabled={wirelessDisabled}
       />
       <Input
         label='Use the following DNS server address:'
@@ -154,6 +161,7 @@ const Fieldset = ({ name, form, onChange }) => {
         type='radio'
         name={`${name}.dns.address`}
         onChange={onChange}
+        disabled={wirelessDisabled}
       />
       <fieldset
         disabled={form[name].dns.auto}

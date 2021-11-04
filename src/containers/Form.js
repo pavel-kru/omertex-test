@@ -1,39 +1,39 @@
-import React, { useReducer, useCallback } from "react";
+import React, { useReducer, useCallback } from 'react';
 
-import Fieldset from "../components/Fieldset";
-import Button from "../UI/Button";
-import { ipValidation } from "../utils/check-validity";
-import styles from "./Form.module.scss";
+import Fieldset from '../components/Fieldset';
+import Button from '../UI/Button';
+import { ipValidation } from '../utils/check-validity';
+import styles from './Form.module.scss';
 
 const formInitialState = {
   Ethernet: {
     ip: {
       auto: true,
-      address: "",
-      subnetMask: "",
-      defaultGateway: "",
+      address: '',
+      subnetMask: '',
+      defaultGateway: '',
     },
     dns: {
       auto: true,
-      preferedServer: "",
-      alternativeServer: "",
+      preferedServer: '',
+      alternativeServer: '',
     },
   },
   Wireless: {
     enable: false,
-    networkName: "",
+    networkName: '',
     enableKey: false,
-    securityKey: "",
+    securityKey: '',
     ip: {
       auto: true,
-      address: "",
-      subnetMask: "",
-      defaultGateway: "",
+      address: '',
+      subnetMask: '',
+      defaultGateway: '',
     },
     dns: {
       auto: true,
-      preferedServer: "",
-      alternativeServer: "",
+      preferedServer: '',
+      alternativeServer: '',
     },
   },
   errors: {
@@ -45,7 +45,7 @@ const formInitialState = {
 const formReducer = (state, action) => {
   const { name, type, value } = action;
 
-  if (type === "SUBMIT") {
+  if (type === 'SUBMIT') {
     console.log(
       JSON.stringify({
         Ethernet: { ...state.Ethernet },
@@ -54,15 +54,15 @@ const formReducer = (state, action) => {
     );
     return { ...formInitialState };
   }
-  if (type === "CANCEL") {
+  if (type === 'CANCEL') {
     return { ...formInitialState };
   }
 
-  const updatePath = name && name.split(".");
+  const updatePath = name && name.split('.');
 
-  if (updatePath.length === 2 && (type === "checkbox" || type === "radio")) {
+  if (updatePath.length === 2 && (type === 'checkbox' || type === 'radio')) {
     const [path, key] = updatePath;
-    if (key === "enable" && state.Wireless.enable) {
+    if (key === 'enable' && state.Wireless.enable) {
       return {
         ...state,
         Wireless: {
@@ -75,7 +75,7 @@ const formReducer = (state, action) => {
       };
     }
 
-    if (key === "enableKey" && state.Wireless.enableKey) {
+    if (key === 'enableKey' && state.Wireless.enableKey) {
       return {
         ...state,
         Wireless: {
@@ -94,7 +94,7 @@ const formReducer = (state, action) => {
     };
   }
 
-  if (updatePath.length === 3 && (type === "checkbox" || type === "radio")) {
+  if (updatePath.length === 3 && (type === 'checkbox' || type === 'radio')) {
     const [path, subPath, key] = updatePath;
     if (!state[path][subPath][key]) {
       return {
@@ -168,7 +168,7 @@ function Form() {
 
   const inputChangeHandler = useCallback(({ target }) => {
     dispatchForm({
-      name: target.getAttribute("idx"),
+      name: target.getAttribute('idx'),
       type: target.type,
       value: target.value,
     });
@@ -178,40 +178,37 @@ function Form() {
 
   const formCheckValidityHandler = (obj) => {
     for (let key in obj) {
-      if (typeof obj[key] === "string") {
+      if (typeof obj[key] === 'string') {
         formIsValid = false;
       }
-      if (typeof obj[key] === "object") formCheckValidityHandler(obj[key]);
+      if (typeof obj[key] === 'object') formCheckValidityHandler(obj[key]);
     }
   };
 
   formCheckValidityHandler(form.errors);
-  
+
   const formSubmitHandler = (event) => {
     event.preventDefault();
     // if (!formIsValid) return;
-    dispatchForm({ type: "SUBMIT" });
+    dispatchForm({ type: 'SUBMIT' });
   };
 
   const formCancelHandler = (event) => {
     event.preventDefault();
-    dispatchForm({ type: "CANCEL" });
+    dispatchForm({ type: 'CANCEL' });
   };
 
   return (
     <form onSubmit={formSubmitHandler} className={styles.form}>
-      <div className={styles["fieldset-container"]}>
-        <Fieldset name="Ethernet" onChange={inputChangeHandler} form={form} />
-        <Fieldset name="Wireless" onChange={inputChangeHandler} form={form} />
+      <div className={styles['fieldset-container']}>
+        <Fieldset name='Ethernet' onChange={inputChangeHandler} form={form} />
+        <Fieldset name='Wireless' onChange={inputChangeHandler} form={form} />
       </div>
       <div className={styles.buttons}>
-        <Button
-          type="submit"
-          disabled={!formIsValid}
-        >
+        <Button type='submit' disabled={!formIsValid}>
           Save
         </Button>
-        <Button type="cancel" onClick={formCancelHandler}>
+        <Button type='cancel' onClick={formCancelHandler}>
           Cancel
         </Button>
       </div>

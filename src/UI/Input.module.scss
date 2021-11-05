@@ -21,7 +21,6 @@
     flex-basis: 100%;
     margin-left: 100%;
     white-space: nowrap;
-
   }
   select {
     width: 10em;
@@ -30,11 +29,11 @@
 
 .errorInput {
   input {
-    border: 1px solid #b40e0e;
-    background-color: #fddddd;
+    border: 1px solid $red;
+    background-color: $cream;
     &:focus {
-      border-color: #ff8800;
-      background-color: #fbe8d2;
+      border-color: $orange;
+      background-color: $cream;
     }
   }
 }

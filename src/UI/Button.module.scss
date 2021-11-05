@@ -3,7 +3,7 @@
 .button {
   display: inline-block;
   font: inherit;
-  color: white;
+  color: $white;
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: 12px;
@@ -26,7 +26,7 @@
     animation: bump 700ms ease-out 100ms infinite;
   }
   &:active {
-    color: turquoise;
+    color: $turquoise;
   }
   &:focus {
     outline: none;
@@ -37,7 +37,7 @@
     width: 20px;
     height: 20px;
     margin-left: 1em;
-    border: 1px solid #0074d9;
+    border: 1px solid $blue;
     border-radius: 50%;
     border-right-color: transparent;
     transition: transform 1.9s ease-in-out;
@@ -45,8 +45,8 @@
       content: "";
       top: 0;
       position: absolute;
-      border: 10px solid #ffffff;
-      border-bottom-color: #0074d9;
+      border: 10px solid $white;
+      border-bottom-color: $blue;
       border-right-width: 0;
       border-top-width: 0;
       border-left-color: transparent;
@@ -57,6 +57,6 @@
     opacity: 0.5;
     &:hover {
       transform: none;
-         }
+    }
   }
 }

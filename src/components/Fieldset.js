@@ -70,7 +70,6 @@ const Fieldset = ({ name, form, onChange }) => {
           value={form.Wireless.securityKey}
           onChange={onChange}
           required
-          disabled={wirelessDisabled}
         />
       </>
     );

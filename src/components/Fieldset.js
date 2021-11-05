@@ -44,7 +44,6 @@ const Fieldset = ({ name, form, onChange }) => {
           />
           <Button
             type='refresh'
-            disabled={!form.Wireless.enable}
             onClick={(event) => event.preventDefault()}
             disabled={wirelessDisabled}
           />
